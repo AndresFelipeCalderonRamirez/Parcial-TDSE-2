@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalan App</title>
+</head>
+<body>
+
+<h1>Numeros de Catalan</h1>
+
+<input type="number" id="n" placeholder="Ingresa n">
+<button onclick="consultar()">Calcular</button>
+
+<p id="resultado"></p>
+
+<script>
+    function consultar() {
+        let n = document.getElementById("n").value;
+
+        fetch("/value?n=" + n)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("resultado").innerText = data;
+            })
+            .catch(error => {
+                document.getElementById("resultado").innerText = "Error: " + error;
+            });
+    }
+</script>
+
+</body>
+</html>
+
+
